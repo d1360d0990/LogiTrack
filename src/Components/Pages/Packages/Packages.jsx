@@ -1,6 +1,5 @@
 import { ClientSearch } from "../../Molecules/SearchBar/ClientSearch"
 import PersistentDrawerLeft from "../../Organisms/Headers/PersistentDrawerLeft/PersistentDrawerLeft"
-//import EventTable from "../../Main/EventTable/EventTable"
 import { AddPackage } from "../../Atoms/Button/AddPackage"
 import PackageTable from "../../PackageTable/PackageTable"
 

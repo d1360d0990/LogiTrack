@@ -6,7 +6,7 @@ export const AddPackage = () => {
   const navigate = useNavigate();
 
   const handleCreateEventClick = () => {
-    navigate('/packages/addPackage/OrderForm'); // Actualiza la ruta aquí
+    navigate('/packages/addPackage');
   };
 
   return (

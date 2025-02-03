@@ -2,7 +2,7 @@ import { useState } from "react";
 import { postApi } from "../service/postApi";
 
 export const useForm = () => {
-  const [eventForm, setEventForm] = useState({
+  const [orderForm, setOrderForm] = useState({
     nombre: "",
     descripcion: "",
     fecha: "",
@@ -12,7 +12,7 @@ export const useForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setEventForm((prevForm) => ({
+    setOrderForm((prevForm) => ({
       ...prevForm,
       [name]: value,
     }));
@@ -21,7 +21,7 @@ export const useForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const sendData = await postApi(eventForm);
+      const sendData = await postApi(orderForm);
       console.log('Respuesta de la API:', sendData);
       resetForm();
     } catch (error) {
@@ -30,14 +30,14 @@ export const useForm = () => {
   };
 
   const setFieldValue = (field, value) => {
-    setEventForm((prevForm) => ({
+    setOrderForm((prevForm) => ({
       ...prevForm,
       [field]: value,
     }));
   };
 
   const resetForm = () => {
-    setEventForm({
+    setOrderForm({
       nombre: "",
       descripcion: "",
       fecha: "",
@@ -46,5 +46,5 @@ export const useForm = () => {
     });
   };
 
-  return {eventForm, handleSubmit, handleChange, setFieldValue, resetForm};
+  return {orderForm, handleSubmit, handleChange, setFieldValue, resetForm};
 };

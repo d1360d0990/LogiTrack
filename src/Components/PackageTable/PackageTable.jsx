@@ -32,10 +32,9 @@ export const PackageTable = ({ packages }) => {
           <TableBody>
             {packages?.map((pkg) => (
               <TableRow key={pkg._id} className="table-row">
-                <TableCell>{pkg.numeroRastreo}</TableCell>
                 <TableCell>{pkg.remitente}</TableCell>
                 <TableCell>{pkg.destinatario}</TableCell>
-                <TableCell>{pkg.fecha}</TableCell>
+                <TableCell>{pkg.fechaCreacion}</TableCell>
                 <TableCell>{pkg.origen}</TableCell>
                 <TableCell>{pkg.destino}</TableCell>
                 <TableCell>{pkg.estado}</TableCell>
