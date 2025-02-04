@@ -20,7 +20,7 @@ export const PackageTable = ({ packages }) => {
         <Table>
           <TableHead>
             <TableRow className="package-header">
-              <TableCell>N° Rastreo</TableCell>
+              <TableCell>Cod. Seguimiento</TableCell>
               <TableCell>Remitente</TableCell>
               <TableCell>Destinatario</TableCell>
               <TableCell>Fecha</TableCell>
@@ -32,6 +32,7 @@ export const PackageTable = ({ packages }) => {
           <TableBody>
             {packages?.map((pkg) => (
               <TableRow key={pkg._id} className="table-row">
+                <TableCell>{pkg._id}</TableCell>
                 <TableCell>{pkg.remitente}</TableCell>
                 <TableCell>{pkg.destinatario}</TableCell>
                 <TableCell>{pkg.fechaCreacion}</TableCell>

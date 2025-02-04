@@ -3,11 +3,12 @@ import { postApi } from "../service/postApi";
 
 export const useForm = () => {
   const [orderForm, setOrderForm] = useState({
-    nombre: "",
-    descripcion: "",
+    Remitente: "",
+    Destinatario: "",
     fecha: "",
-    lugar: "",
-    tickets: "",
+    Origen: "",
+    Destino: "",
+    Estado: "",
   });
 
   const handleChange = (e) => {
