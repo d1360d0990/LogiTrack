@@ -27,6 +27,7 @@ export const PackageTable = ({ packages }) => {
               <TableCell>Origen</TableCell>
               <TableCell>Destino</TableCell>
               <TableCell>Estado</TableCell>
+              <TableCell>Acciones</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>

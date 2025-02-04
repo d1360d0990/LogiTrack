@@ -2,9 +2,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Home } from './Components/Pages/Home/Home.jsx';
 import { Packages } from './Components/Pages/Packages/Packages.jsx';
 import { Login } from '../src/Components/Pages/Login/Login.jsx';
-import OrderForm from './Components/OrderForm/OrderForm.jsx';
 import { Provider } from 'react-redux';
 import store from './store/Store.jsx';
+import AddPackage from './Components/Pages/AddPackage/AddPackage.jsx';
+
+
 
 export const baseURL = import.meta.env.VITE_BASE_URL;
 export const OrdersURL = import.meta.env.VITE_ORDERS;
@@ -24,7 +26,8 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home/>} />
           <Route path="/packages" element={<Packages/>} />
-          <Route path="/packages/addPackage" element={<OrderForm/>} />
+          <Route path="/packages/addPackage" element={<AddPackage/>} />
+          
           
         </Routes>
       </Router>

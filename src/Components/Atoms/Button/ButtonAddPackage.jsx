@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import ControlPointTwoToneIcon from '@mui/icons-material/ControlPointTwoTone';
 import { useNavigate } from 'react-router-dom';
 
-export const AddPackage = () => {
+export const ButtonAddPackage = () => {
   const navigate = useNavigate();
 
   const handleCreateEventClick = () => {
@@ -21,3 +21,5 @@ export const AddPackage = () => {
     </Button>
   );
 };
+
+export default ButtonAddPackage;
