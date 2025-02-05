@@ -1,39 +1,22 @@
-import { useState } from "react";
 import {
     TextField,
-    Button,
     Grid,
     MenuItem,
     Typography,
 } from "@mui/material";
 import "./OrderForm.css";
+import { Cancel } from "../Atoms/Button/Cancel";
+import { useForm } from '../../Hooks/useForm'
+import { Register } from "../Atoms/Button/Register";
+import { Clear } from "../Atoms/Button/Clear";
+
+
 
 const OrderForm = () => {
-    const [formData, setFormData] = useState({
-        senderName: "",
-        senderPhone: "",
-        recipientName: "",
-        recipientPhone: "",
-        packageDescription: "",
-        packageWeight: "",
-        deliveryAddress: "",
-        status: "Pendiente",
-    });
+    const { orderForm, handleSubmit, handleChange, resetForm } = useForm();
+
 
     const statuses = ["Pendiente", "En tránsito", "Entregado"];
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Form data submitted:", formData);
-    };
 
     return (
         <form onSubmit={handleSubmit}>
@@ -53,7 +36,7 @@ const OrderForm = () => {
                     <TextField
                         label="Nombre del remitente"
                         name="senderName"
-                        value={formData.senderName}
+                        value={orderForm.senderName}
                         onChange={handleChange}
                         fullWidth
                         required
@@ -63,7 +46,7 @@ const OrderForm = () => {
                     <TextField
                         label="Teléfono del remitente"
                         name="senderPhone"
-                        value={formData.senderPhone}
+                        value={orderForm.senderPhone}
                         onChange={handleChange}
                         fullWidth
                         required
@@ -77,7 +60,7 @@ const OrderForm = () => {
                     <TextField
                         label="Nombre del destinatario"
                         name="recipientName"
-                        value={formData.recipientName}
+                        value={orderForm.recipientName}
                         onChange={handleChange}
                         fullWidth
                         required
@@ -87,14 +70,14 @@ const OrderForm = () => {
                     <TextField
                         label="Teléfono del destinatario"
                         name="recipientPhone"
-                        value={formData.recipientPhone}
+                        value={orderForm.recipientPhone}
                         onChange={handleChange}
                         fullWidth
                         required
                     />
                 </Grid>
 
-        
+
                 <Grid item xs={12}>
                     <Typography variant="h6">Información del paquete</Typography>
                 </Grid>
@@ -102,7 +85,7 @@ const OrderForm = () => {
                     <TextField
                         label="Descripción del paquete"
                         name="packageDescription"
-                        value={formData.packageDescription}
+                        value={orderForm.packageDescription}
                         onChange={handleChange}
                         fullWidth
                         multiline
@@ -113,7 +96,7 @@ const OrderForm = () => {
                     <TextField
                         label="Peso del paquete (kg)"
                         name="packageWeight"
-                        value={formData.packageWeight}
+                        value={orderForm.packageWeight}
                         onChange={handleChange}
                         fullWidth
                         required
@@ -123,20 +106,20 @@ const OrderForm = () => {
                     <TextField
                         label="Dirección de entrega"
                         name="deliveryAddress"
-                        value={formData.deliveryAddress}
+                        value={orderForm.deliveryAddress}
                         onChange={handleChange}
                         fullWidth
                         required
                     />
                 </Grid>
 
-        
+
                 <Grid item xs={12}>
                     <TextField
                         select
                         label="Estado de la comanda"
                         name="status"
-                        value={formData.status}
+                        value={orderForm.status}
                         onChange={handleChange}
                         fullWidth
                         required
@@ -150,9 +133,11 @@ const OrderForm = () => {
                 </Grid>
 
                 <Grid item xs={12}>
-                    <Button type="submit" variant="contained" color="primary" fullWidth>
-                        Registrar Comanda
-                    </Button>
+                    <div className="order-form_buttons">
+                        <Register />
+                        <Clear onClick={resetForm} />
+                        <Cancel />
+                    </div>
                 </Grid>
             </Grid>
         </form>

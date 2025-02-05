@@ -34,12 +34,12 @@ export const PackageTable = ({ packages }) => {
             {packages?.map((pkg) => (
               <TableRow key={pkg._id} className="table-row">
                 <TableCell>{pkg._id}</TableCell>
-                <TableCell>{pkg.remitente}</TableCell>
-                <TableCell>{pkg.destinatario}</TableCell>
+                <TableCell>{pkg.senderName}</TableCell>
+                <TableCell>{pkg.recipientName}</TableCell>
                 <TableCell>{pkg.fechaCreacion}</TableCell>
                 <TableCell>{pkg.origen}</TableCell>
-                <TableCell>{pkg.destino}</TableCell>
-                <TableCell>{pkg.estado}</TableCell>
+                <TableCell>{pkg.deliveryAddress}</TableCell>
+                <TableCell>{pkg.status}</TableCell>
                 <TableCell>
                   <IconButton aria-label="edit" size="small">
                     <EditIcon />

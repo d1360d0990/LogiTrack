@@ -3,12 +3,14 @@ import { postApi } from "../service/postApi";
 
 export const useForm = () => {
   const [orderForm, setOrderForm] = useState({
-    Remitente: "",
-    Destinatario: "",
-    fecha: "",
-    Origen: "",
-    Destino: "",
-    Estado: "",
+    senderName: "",
+    senderPhone: "",
+    recipientName: "",
+    recipientPhone: "",
+    packageDescription: "",
+    packageWeight: "",
+    deliveryAddress: "",
+    status: "",
   });
 
   const handleChange = (e) => {
@@ -39,13 +41,18 @@ export const useForm = () => {
 
   const resetForm = () => {
     setOrderForm({
-      nombre: "",
-      descripcion: "",
-      fecha: "",
-      lugar: "",
-      tickets: "",
+      senderName: "",
+      senderPhone: "",
+      recipientName: "",
+      recipientPhone: "",
+      packageDescription: "",
+      packageWeight: "",
+      deliveryAddress: "",
+      status: "",
     });
   };
 
   return {orderForm, handleSubmit, handleChange, setFieldValue, resetForm};
 };
+
+export default useForm;

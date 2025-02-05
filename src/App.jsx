@@ -11,7 +11,7 @@ import AddPackage from './Components/Pages/AddPackage/AddPackage.jsx';
 export const baseURL = import.meta.env.VITE_BASE_URL;
 export const OrdersURL = import.meta.env.VITE_ORDERS;
 export const filters = import.meta.env.VITE_GET_ORDERS_FILTER;
-export const addOrderURL = import.meta.env.VITE_ADD_ORDERS
+export const addOrderURL = import.meta.env.VITE_ADD_ORDER
 
 
 
