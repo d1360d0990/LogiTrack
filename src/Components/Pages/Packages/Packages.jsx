@@ -35,11 +35,7 @@ export const Packages = () => {
             position: "fixed",
             top: 0,
             left: 0,
-<<<<<<< HEAD
-            backgroundColor: "rgba(255, 255, 255, 0.7)", // Opcional para efecto de pantalla de carga
-=======
             backgroundColor: "rgba(255, 255, 255, 0.7)", 
->>>>>>> 397f1bc (generando pdf)
           }}
         >
           <CircularProgress />

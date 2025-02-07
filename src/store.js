@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-// src/store.js
-=======
->>>>>>> 397f1bc (generando pdf)
 import { configureStore } from '@reduxjs/toolkit';
 import rootReducer from './reducers';
 
