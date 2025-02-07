@@ -36,9 +36,9 @@ export const PackageTable = ({ packages }) => {
                 <TableCell>{pkg._id}</TableCell>
                 <TableCell>{pkg.senderName}</TableCell>
                 <TableCell>{pkg.recipientName}</TableCell>
-                <TableCell>{pkg.fechaCreacion}</TableCell>
-                <TableCell>{pkg.origen}</TableCell>
-                <TableCell>{pkg.deliveryAddress}</TableCell>
+                <TableCell>{pkg.date}</TableCell>
+                <TableCell>{pkg.originProvince}</TableCell>
+                <TableCell>{pkg.destinationProvince}</TableCell>
                 <TableCell>{pkg.status}</TableCell>
                 <TableCell>
                   <IconButton aria-label="edit" size="small">

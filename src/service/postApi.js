@@ -11,7 +11,12 @@ export const postApi = async (orderForm) => {
       packageDescription: orderForm.packageDescription,
       packageWeight: orderForm.packageWeight,
       deliveryAddress: orderForm.deliveryAddress,
+      originProvince: orderForm.originProvince,
+      originDepartment: orderForm.originDepartment,
+      destinationProvince: orderForm.destinationProvince,
+      destinationDepartment: orderForm.destinationDepartment,
       status: orderForm.status,
+      date: orderForm.date,
     });
     console.log("Respuesta de la API:", response.data);
     return response.data;

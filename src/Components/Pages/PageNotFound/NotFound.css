@@ -1,0 +1,35 @@
+.page-not-found {
+    text-align: center;
+    padding: 50px;
+    font-family: "Arial", sans-serif;
+  }
+  
+  .title {
+    font-size: 2rem;
+    color: #ffcc00;
+    margin-bottom: 20px;
+  }
+  
+  .image {
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .text {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .link {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  

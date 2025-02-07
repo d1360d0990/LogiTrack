@@ -5,6 +5,9 @@ import { Login } from '../src/Components/Pages/Login/Login.jsx';
 import { Provider } from 'react-redux';
 import store from './store/Store.jsx';
 import AddPackage from './Components/Pages/AddPackage/AddPackage.jsx';
+import { Tarifas } from './Components/Pages/Rates/Tarifas.jsx';
+import { Consultations } from './Components/Pages/Consult/Consultations.jsx';
+import PageNotFound from './Components/Pages/PageNotFound/PageNotFound.jsx';
 
 
 
@@ -26,8 +29,10 @@ function App() {
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home/>} />
           <Route path="/packages" element={<Packages/>} />
+          <Route path="/rates" element={<Tarifas/>} />
+          <Route path="/Consultations" element={<Consultations/>} />
           <Route path="/packages/addPackage" element={<AddPackage/>} />
-          
+          <Route path="*" element={<PageNotFound/>} />
           
         </Routes>
       </Router>

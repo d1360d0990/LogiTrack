@@ -7,6 +7,7 @@ import { getorders } from "../../../service/getOrders"
 import { baseURL } from "../../../App"
 import ButtonAddPackage from "../../Atoms/Button/ButtonAddPackage"
 import { CircularProgress } from "@mui/material";
+import { Box } from "@mui/material";
 
 
 export const Packages = () => {
@@ -24,7 +25,21 @@ export const Packages = () => {
       </div>
       <ClientSearch sx={{ padding: '10px' }} />
       {loading ? (
-        <CircularProgress />
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            height: "100vh",
+            width: "100vw",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            backgroundColor: "rgba(255, 255, 255, 0.7)", // Opcional para efecto de pantalla de carga
+          }}
+        >
+          <CircularProgress />
+        </Box>
       ) : (
         <PackageTable packages={data} />
       )}

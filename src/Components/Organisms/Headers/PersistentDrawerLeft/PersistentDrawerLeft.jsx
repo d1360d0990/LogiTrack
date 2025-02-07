@@ -19,14 +19,13 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Logo } from '../../../Atoms/Logo/Logo';
-
+import { useNavigate } from 'react-router-dom';  // Importante: useNavigate para la navegación
 
 const drawerWidth = 240;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme }) => ({
     flexGrow: 1,
-    
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -73,7 +72,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
 }));
@@ -81,6 +79,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();  // Usamos useNavigate para redirigir
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -88,6 +87,10 @@ export default function PersistentDrawerLeft() {
 
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const handleMenuClick = (route) => {
+    navigate(route);  // Navegamos a la ruta usando useNavigate
   };
 
   return (
@@ -135,9 +138,21 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Entrar Datos', 'Actualizar Datos', 'Consultar Cliente', 'Lista de Clientes'].map((text, index) => (
+          {['Envios','Agregar Encomienda', 'Tarifas', 'Consultar Encomienda'].map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton>
+              <ListItemButton onClick={() => {
+                if (text === 'Envios') {
+                  navigate('/packages'); 
+                }
+                else if (text === 'Agregar Encomienda') {
+                  navigate('/packages/addPackage');
+                }
+                else if (text === 'Tarifas') {
+                  navigate('/rates');
+                } else if (text === 'Consultar Encomienda') {
+                  navigate('/consultations');
+                }
+              }}>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
@@ -148,9 +163,15 @@ export default function PersistentDrawerLeft() {
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          {['Mail', 'Cerrar Sesion'].map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton>
+              <ListItemButton onClick={() => {
+                if (text === 'Mail') {
+                  window.location.href = 'https://mail.google.com';  // Abrimos Gmail
+                } else {
+                  handleMenuClick('/');  // Cierra sesión, navega a la página principal
+                }
+              }}>
                 <ListItemIcon>
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
@@ -162,8 +183,7 @@ export default function PersistentDrawerLeft() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        
-        </Main>
+      </Main>
     </Box>
   );
 }

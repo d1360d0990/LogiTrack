@@ -15,6 +15,7 @@ export const Tracker = ({ onClick }) => {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
+          
         }}
       >
         <TravelExploreIcon sx={{ fontSize: 40 }} />

@@ -9,7 +9,8 @@ import "./OrderForm.css";
 const OrderForm = () => {
     const { orderForm, handleSubmit, handleChange, resetForm, alertData } = useForm();
     const [provinces, setProvinces] = useState([]);
-    const [departments, setDepartments] = useState([]);
+    const [originDepartments, setOriginDepartments] = useState([]);
+    const [destinationDepartments, setDestinationDepartments] = useState([]);
     const statuses = ["Pendiente", "En tránsito", "Entregado"];
 
     // Obtener provincias desde la API
@@ -26,7 +27,7 @@ const OrderForm = () => {
         fetchProvinces();
     }, []);
 
-    // Obtener departamentos cuando cambia la provincia
+    // Obtener departamentos cuando cambia la provincia de origen
     useEffect(() => {
         if (!orderForm.originProvince) return;
 
@@ -36,13 +37,31 @@ const OrderForm = () => {
                     `https://apis.datos.gob.ar/georef/api/departamentos?provincia=${orderForm.originProvince}&max=100`
                 );
                 const data = await response.json();
-                setDepartments(data.departamentos);
+                setOriginDepartments(data.departamentos);
             } catch (error) {
-                console.error("Error al obtener departamentos:", error);
+                console.error("Error al obtener departamentos de origen:", error);
             }
         };
         fetchDepartments();
     }, [orderForm.originProvince]);
+
+    // Obtener departamentos cuando cambia la provincia de destino
+    useEffect(() => {
+        if (!orderForm.destinationProvince) return;
+
+        const fetchDepartments = async () => {
+            try {
+                const response = await fetch(
+                    `https://apis.datos.gob.ar/georef/api/departamentos?provincia=${orderForm.destinationProvince}&max=100`
+                );
+                const data = await response.json();
+                setDestinationDepartments(data.departamentos);
+            } catch (error) {
+                console.error("Error al obtener departamentos de destino:", error);
+            }
+        };
+        fetchDepartments();
+    }, [orderForm.destinationProvince]);
 
     return (
         <form onSubmit={handleSubmit}>
@@ -166,22 +185,31 @@ const OrderForm = () => {
                     </TextField>
                 </Grid>
 
-                {/* Fecha actual */}
+
                 <Grid item xs={12} sm={6}>
                     <TextField
-                        label="Fecha de creación"
-                        name="orderDate"
-                        value={new Date().toISOString().split("T")[0]} // Formato YYYY-MM-DD
+                        label="Fecha de la orden"
+                        name="date"
+                        type="date"
+                        value={orderForm.date}
+                        onChange={handleChange}
                         fullWidth
-                        disabled
+                        required
+                        InputLabelProps={{
+                            shrink: true, // Para que la etiqueta no se superponga con el selector de fecha
+                        }}
                     />
                 </Grid>
 
-                {/* Origen (Provincia) */}
+
+                {/* Origen */}
+                <Grid item xs={12}>
+                    <Typography variant="h6">Ubicación de Origen</Typography>
+                </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
                         select
-                        label="Provincia de origen"
+                        label="Provincia de Origen"
                         name="originProvince"
                         value={orderForm.originProvince || ""}
                         onChange={handleChange}
@@ -195,32 +223,66 @@ const OrderForm = () => {
                         ))}
                     </TextField>
                 </Grid>
-
-                {/* Origen (Departamento) */}
                 <Grid item xs={12} sm={6}>
                     <TextField
                         select
-                        label="Departamento de origen"
+                        label="Localidad de Origen"
                         name="originDepartment"
                         value={orderForm.originDepartment || ""}
                         onChange={handleChange}
                         fullWidth
                         required
-                        disabled={!orderForm.originProvince} // Deshabilitado si no hay provincia seleccionada
+                        disabled={!orderForm.originProvince}
                     >
-                        {departments.length > 0 ? (
-                            departments.map((department) => (
-                                <MenuItem key={department.id} value={department.nombre}>
-                                    {department.nombre}
-                                </MenuItem>
-                            ))
-                        ) : (
-                            <MenuItem disabled>Seleccione una provincia primero</MenuItem>
-                        )}
+                        {originDepartments.map((department) => (
+                            <MenuItem key={department.id} value={department.nombre}>
+                                {department.nombre}
+                            </MenuItem>
+                        ))}
                     </TextField>
                 </Grid>
 
-                {/* Botones */}
+
+                <Grid item xs={12}>
+                    <Typography variant="h6">Ubicación de Destino</Typography>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <TextField
+                        select
+                        label="Provincia de Destino"
+                        name="destinationProvince"
+                        value={orderForm.destinationProvince || ""}
+                        onChange={handleChange}
+                        fullWidth
+                        required
+                    >
+                        {provinces.map((province) => (
+                            <MenuItem key={province.id} value={province.nombre}>
+                                {province.nombre}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                    <TextField
+                        select
+                        label="Localidad de Destino"
+                        name="destinationDepartment"
+                        value={orderForm.destinationDepartment || ""}
+                        onChange={handleChange}
+                        fullWidth
+                        required
+                        disabled={!orderForm.destinationProvince}
+                    >
+                        {destinationDepartments.map((department) => (
+                            <MenuItem key={department.id} value={department.nombre}>
+                                {department.nombre}
+                            </MenuItem>
+                        ))}
+                    </TextField>
+                </Grid>
+
+
                 <Grid item xs={12}>
                     <div className="order-form_buttons">
                         <Register />

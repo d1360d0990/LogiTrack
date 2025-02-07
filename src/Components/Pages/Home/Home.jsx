@@ -22,10 +22,10 @@ export const Home = () => {
         className="Grid2"
         sx={{
           display: 'flex',
-          height: '100%',
-          width: '100%',
+          height: '100vh',  
+          width: '100%',    
           backgroundImage: `url(${Luz})`,
-          backgroundSize: '100% 100%',
+          backgroundSize: 'cover', 
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           flexDirection: 'column',
@@ -40,6 +40,7 @@ export const Home = () => {
             justifyContent: 'center',
             alignItems: 'center',
             position: 'relative',
+            gap: 5,
           }}
           padding={25}
         >
@@ -56,7 +57,7 @@ export const Home = () => {
                 padding: '20px',
                 borderRadius: '8px',
                 boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-                width: '80%',
+                width: '100%',
                 textAlign: 'center',
               }}
             >

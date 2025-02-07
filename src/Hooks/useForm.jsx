@@ -12,6 +12,12 @@ export const useForm = () => {
     packageWeight: "",
     deliveryAddress: "",
     status: "",
+    date: "",
+    originProvince: "",
+    originDepartment: "",
+    destinationProvince: "",
+    destinationDepartment: "",
+    
   });
 
   const [alertData, setAlertData] = useState({ message: "", severity: "", show: false });
@@ -44,13 +50,18 @@ export const useForm = () => {
   const resetForm = () => {
     setOrderForm({
       senderName: "",
-      senderPhone: "",
-      recipientName: "",
-      recipientPhone: "",
-      packageDescription: "",
-      packageWeight: "",
-      deliveryAddress: "",
-      status: "",
+    senderPhone: "",
+    recipientName: "",
+    recipientPhone: "",
+    packageDescription: "",
+    packageWeight: "",
+    deliveryAddress: "",
+    status: "",
+    date: "",
+    originProvince: "",
+    originDepartment: "",
+    destinationProvince: "",
+    destinationDepartment: "",
     });
     setAlertData({ message: "", severity: "", show: false });
   };
