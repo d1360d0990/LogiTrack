@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # LogiTrack - S.A
 
 LogiTrack es una aplicación web diseñada para gestionar y rastrear envíos de paquetes. Permite a los usuarios registrar encomiendas, consultar el estado de sus envíos y ver tarifas de servicios.
@@ -25,3 +26,13 @@ LogiTrack es una aplicación web diseñada para gestionar y rastrear envíos de 
 
 ## Despliegue
 La aplicación está desplegada en Vercel y puede ser accedida desde cualquier navegador web. desde --> https://logi-track-ivory.vercel.app/
+=======
+# React + Vite
+
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+
+Currently, two official plugins are available:
+
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+>>>>>>> 397f1bc (generando pdf)

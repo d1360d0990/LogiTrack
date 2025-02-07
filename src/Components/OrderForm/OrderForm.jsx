@@ -13,7 +13,11 @@ const OrderForm = () => {
     const [destinationDepartments, setDestinationDepartments] = useState([]);
     const statuses = ["Pendiente", "En tránsito", "Entregado"];
 
+<<<<<<< HEAD
     // Obtener provincias desde la API
+=======
+    
+>>>>>>> 397f1bc (generando pdf)
     useEffect(() => {
         const fetchProvinces = async () => {
             try {
@@ -27,7 +31,11 @@ const OrderForm = () => {
         fetchProvinces();
     }, []);
 
+<<<<<<< HEAD
     // Obtener departamentos cuando cambia la provincia de origen
+=======
+    
+>>>>>>> 397f1bc (generando pdf)
     useEffect(() => {
         if (!orderForm.originProvince) return;
 
@@ -45,7 +53,11 @@ const OrderForm = () => {
         fetchDepartments();
     }, [orderForm.originProvince]);
 
+<<<<<<< HEAD
     // Obtener departamentos cuando cambia la provincia de destino
+=======
+    
+>>>>>>> 397f1bc (generando pdf)
     useEffect(() => {
         if (!orderForm.destinationProvince) return;
 
@@ -66,21 +78,33 @@ const OrderForm = () => {
     return (
         <form onSubmit={handleSubmit}>
             <Grid container spacing={2}>
+<<<<<<< HEAD
                 {/* Título */}
+=======
+                
+>>>>>>> 397f1bc (generando pdf)
                 <Grid item xs={12}>
                     <Typography variant="h5" gutterBottom>
                         Formulario de Comanda
                     </Typography>
                 </Grid>
 
+<<<<<<< HEAD
                 {/* Mostrar alerta condicionalmente */}
+=======
+                
+>>>>>>> 397f1bc (generando pdf)
                 {alertData.show && (
                     <Grid item xs={12}>
                         <Alert severity={alertData.severity}>{alertData.message}</Alert>
                     </Grid>
                 )}
 
+<<<<<<< HEAD
                 {/* Datos del remitente */}
+=======
+                
+>>>>>>> 397f1bc (generando pdf)
                 <Grid item xs={12}>
                     <Typography variant="h6">Datos del remitente</Typography>
                 </Grid>
@@ -105,7 +129,11 @@ const OrderForm = () => {
                     />
                 </Grid>
 
+<<<<<<< HEAD
                 {/* Datos del destinatario */}
+=======
+                
+>>>>>>> 397f1bc (generando pdf)
                 <Grid item xs={12}>
                     <Typography variant="h6">Datos del destinatario</Typography>
                 </Grid>
@@ -130,7 +158,11 @@ const OrderForm = () => {
                     />
                 </Grid>
 
+<<<<<<< HEAD
                 {/* Información del paquete */}
+=======
+                
+>>>>>>> 397f1bc (generando pdf)
                 <Grid item xs={12}>
                     <Typography variant="h6">Información del paquete</Typography>
                 </Grid>
@@ -166,7 +198,11 @@ const OrderForm = () => {
                     />
                 </Grid>
 
+<<<<<<< HEAD
                 {/* Estado de la comanda */}
+=======
+                
+>>>>>>> 397f1bc (generando pdf)
                 <Grid item xs={12}>
                     <TextField
                         select
@@ -196,13 +232,21 @@ const OrderForm = () => {
                         fullWidth
                         required
                         InputLabelProps={{
+<<<<<<< HEAD
                             shrink: true, // Para que la etiqueta no se superponga con el selector de fecha
+=======
+                            shrink: true, 
+>>>>>>> 397f1bc (generando pdf)
                         }}
                     />
                 </Grid>
 
 
+<<<<<<< HEAD
                 {/* Origen */}
+=======
+                
+>>>>>>> 397f1bc (generando pdf)
                 <Grid item xs={12}>
                     <Typography variant="h6">Ubicación de Origen</Typography>
                 </Grid>

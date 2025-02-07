@@ -19,7 +19,11 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { Logo } from '../../../Atoms/Logo/Logo';
+<<<<<<< HEAD
 import { useNavigate } from 'react-router-dom';  // Importante: useNavigate para la navegación
+=======
+import { useNavigate } from 'react-router-dom';  
+>>>>>>> 397f1bc (generando pdf)
 
 const drawerWidth = 240;
 
@@ -79,7 +83,11 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+<<<<<<< HEAD
   const navigate = useNavigate();  // Usamos useNavigate para redirigir
+=======
+  const navigate = useNavigate();  
+>>>>>>> 397f1bc (generando pdf)
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -90,7 +98,11 @@ export default function PersistentDrawerLeft() {
   };
 
   const handleMenuClick = (route) => {
+<<<<<<< HEAD
     navigate(route);  // Navegamos a la ruta usando useNavigate
+=======
+    navigate(route);  
+>>>>>>> 397f1bc (generando pdf)
   };
 
   return (
@@ -167,9 +179,15 @@ export default function PersistentDrawerLeft() {
             <ListItem key={text} disablePadding>
               <ListItemButton onClick={() => {
                 if (text === 'Mail') {
+<<<<<<< HEAD
                   window.location.href = 'https://mail.google.com';  // Abrimos Gmail
                 } else {
                   handleMenuClick('/');  // Cierra sesión, navega a la página principal
+=======
+                  window.location.href = 'https://mail.google.com';  
+                } else {
+                  handleMenuClick('/');
+>>>>>>> 397f1bc (generando pdf)
                 }
               }}>
                 <ListItemIcon>
