@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { postApi } from "../service/postApi";
+import postApi from "../service/postApi.js";
+import Swal from "sweetalert2";
 
 export const useForm = () => {
   const [orderForm, setOrderForm] = useState({
@@ -13,6 +14,8 @@ export const useForm = () => {
     status: "",
   });
 
+  const [alertData, setAlertData] = useState({ message: "", severity: "", show: false });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setOrderForm((prevForm) => ({
@@ -24,19 +27,18 @@ export const useForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const sendData = await postApi(orderForm);
-      console.log('Respuesta de la API:', sendData);
+      await postApi(orderForm);
+      console.log("Orden enviada correctamente");
+      Swal.fire({
+        title: "Orden Registrada correctamente",
+        icon: "success",
+        draggable: true
+    }) 
       resetForm();
     } catch (error) {
-      console.error('Error al enviar los datos:', error);
+      console.error("Error al enviar los datos:", error);
+      setAlertData({ message: "Error al enviar la orden", severity: "warning", show: true });
     }
-  };
-
-  const setFieldValue = (field, value) => {
-    setOrderForm((prevForm) => ({
-      ...prevForm,
-      [field]: value,
-    }));
   };
 
   const resetForm = () => {
@@ -50,9 +52,14 @@ export const useForm = () => {
       deliveryAddress: "",
       status: "",
     });
+    setAlertData({ message: "", severity: "", show: false });
   };
 
-  return {orderForm, handleSubmit, handleChange, setFieldValue, resetForm};
+  return {
+    orderForm,
+    handleChange,
+    handleSubmit,
+    resetForm,
+    alertData,
+  };
 };
-
-export default useForm;

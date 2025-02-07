@@ -1,20 +1,13 @@
-import {
-    TextField,
-    Grid,
-    MenuItem,
-    Typography,
-} from "@mui/material";
-import "./OrderForm.css";
+import { Alert, Grid, Typography, TextField, MenuItem } from "@mui/material";
 import { Cancel } from "../Atoms/Button/Cancel";
-import { useForm } from '../../Hooks/useForm'
+import { useForm } from '../../Hooks/useForm';
 import { Register } from "../Atoms/Button/Register";
 import { Clear } from "../Atoms/Button/Clear";
-
+import "./OrderForm.css";
 
 
 const OrderForm = () => {
-    const { orderForm, handleSubmit, handleChange, resetForm } = useForm();
-
+    const { orderForm, handleSubmit, handleChange, resetForm, alertData } = useForm();
 
     const statuses = ["Pendiente", "En tránsito", "Entregado"];
 
@@ -27,6 +20,13 @@ const OrderForm = () => {
                         Formulario de Comanda
                     </Typography>
                 </Grid>
+
+                {/* Mostrar alerta condicionalmente */}
+                {alertData.show && (
+                    <Grid item xs={12}>
+                        <Alert severity={alertData.severity}>{alertData.message}</Alert>
+                    </Grid>
+                )}
 
                 {/* Datos del remitente */}
                 <Grid item xs={12}>
@@ -77,7 +77,6 @@ const OrderForm = () => {
                     />
                 </Grid>
 
-
                 <Grid item xs={12}>
                     <Typography variant="h6">Información del paquete</Typography>
                 </Grid>
@@ -112,7 +111,6 @@ const OrderForm = () => {
                         required
                     />
                 </Grid>
-
 
                 <Grid item xs={12}>
                     <TextField

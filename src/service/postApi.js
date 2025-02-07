@@ -20,3 +20,5 @@ export const postApi = async (orderForm) => {
     throw error;
   }
 };
+
+export default postApi;

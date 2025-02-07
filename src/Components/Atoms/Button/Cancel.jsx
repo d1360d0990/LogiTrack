@@ -11,7 +11,7 @@ export const Cancel = () => {
     <>
     <Button
                   variant="contained"
-                  color="secondary"
+                  color="error"
                   onClick={handleCancel}
                   sx={{ margin: 1 }}
                 >

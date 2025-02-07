@@ -6,11 +6,14 @@ import useFetch from "../../../Hooks/useFetch"
 import { getorders } from "../../../service/getOrders"
 import { baseURL } from "../../../App"
 import ButtonAddPackage from "../../Atoms/Button/ButtonAddPackage"
+import { CircularProgress } from "@mui/material";
 
 
 export const Packages = () => {
   const {data, loading} = useFetch(`${baseURL}`, getorders);
   console.log(data);
+
+  
   
   return (
     <>
@@ -20,7 +23,11 @@ export const Packages = () => {
         <ButtonAddPackage/>
       </div>
       <ClientSearch sx={{ padding: '10px' }} />
-<PackageTable packages={data}/> 
+      {loading ? (
+        <CircularProgress />
+      ) : (
+        <PackageTable packages={data} />
+      )}
     
 
     </>
