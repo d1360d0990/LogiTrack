@@ -1,6 +1,6 @@
 import { useState } from "react";
 import postApi from "../service/postApi.js";
-import generatePDF from "../service/generatePDF.js";
+import generatePDF from "../service/generatePDF.js"; // Importamos la función
 import Swal from "sweetalert2";
 
 export const useForm = () => {
@@ -18,7 +18,6 @@ export const useForm = () => {
     originDepartment: "",
     destinationProvince: "",
     destinationDepartment: "",
-    
   });
 
   const [alertData, setAlertData] = useState({ message: "", severity: "", show: false });
@@ -36,11 +35,15 @@ export const useForm = () => {
     try {
       await postApi(orderForm);
       console.log("Orden enviada correctamente");
+
       Swal.fire({
         title: "Orden Registrada correctamente",
         icon: "success",
-        draggable: true
-    }) 
+        draggable: true,
+      }).then(() => {
+        generatePDF(orderForm); // Llamamos a la función para generar el PDF
+      });
+
       resetForm();
     } catch (error) {
       console.error("Error al enviar los datos:", error);
@@ -51,18 +54,18 @@ export const useForm = () => {
   const resetForm = () => {
     setOrderForm({
       senderName: "",
-    senderPhone: "",
-    recipientName: "",
-    recipientPhone: "",
-    packageDescription: "",
-    packageWeight: "",
-    deliveryAddress: "",
-    status: "",
-    date: "",
-    originProvince: "",
-    originDepartment: "",
-    destinationProvince: "",
-    destinationDepartment: "",
+      senderPhone: "",
+      recipientName: "",
+      recipientPhone: "",
+      packageDescription: "",
+      packageWeight: "",
+      deliveryAddress: "",
+      status: "",
+      date: "",
+      originProvince: "",
+      originDepartment: "",
+      destinationProvince: "",
+      destinationDepartment: "",
     });
     setAlertData({ message: "", severity: "", show: false });
   };
