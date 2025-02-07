@@ -1,0 +1,75 @@
+/* Contenedor principal */
+.package-table-container {
+  flex-grow: 1;
+  padding: 24px;
+  align-self: center;
+}
+
+/* Título */
+.package-table-title {
+  color: #3f51b5; /* Color primario */
+  margin-bottom: 16px;
+}
+
+/* Contenedor de la tabla */
+.package-table {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Estilo del encabezado */
+.table-header {
+  background-color: #3f51b5; /* Color primario */
+  color: white;
+}
+
+.table-header .MuiTableCell-root {
+  font-weight: bold;
+  color: white;
+  
+}
+
+/* Filas alternas */
+.table-row:nth-of-type(odd) {
+  background-color: #f5f5f5;
+}
+
+.table-row:hover {
+  background-color: #e0f7fa; /* Color al pasar el ratón */
+  cursor: pointer;
+}
+
+/* Estilo para celdas */
+.MuiTableCell-root {
+  padding: 12px;
+  text-align: center;
+}
+
+.MuiTableHead-root {
+    background-color: #92d8f3;
+}
+
+
+
+/* Estilo responsivo */
+@media (max-width: 768px) {
+  .MuiTableCell-root {
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+
+  .package-table-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .MuiTableCell-root {
+    font-size: 0.75rem;
+  }
+
+  .package-table-title {
+    font-size: 1.25rem;
+  }
+}
